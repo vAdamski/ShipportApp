@@ -10,15 +10,21 @@ namespace ShipportApp.Application.Cargoes.Commands.CreateCargo
 {
     public class CreateCargoCommand : IRequest<string>
     {
+        private string _id;
+
         public string Id 
         {
             get
             {
-                return Id;
+                if(this._id == null)
+                {
+                    this._id = Guid.NewGuid().ToString();
+                }
+                return _id;
             }
             set
             {
-                Id = Guid.NewGuid().ToString();
+                this._id = Guid.NewGuid().ToString();
             }
         }
         public string Name { get; set; }
