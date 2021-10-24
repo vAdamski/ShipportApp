@@ -12,7 +12,7 @@ namespace ShipportApp.Application.Terminals.Queries.GetTerminals
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public List<Cargo> cargoes { get; set; }
+        public List<Cargo> Cargoes { get; set; }
         public DateTime? ATB { get; set; }
         public DateTime? ATD { get; set; }
     }

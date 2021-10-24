@@ -38,5 +38,24 @@ namespace ShipportApp.Controllers
             })
             .ToArray();
         }
+
+        //[HttpGet]
+        //public async Task<ActionResult<RotationVm>> GetRotation()
+        //{
+        //    var rotations = await Mediator.Send(new GetRotationsQuery { });
+
+        //    if (rotations == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(rotations);
+        //}
+
+        //[HttpPatch]
+        //public async Task<ActionResult<RotationVm>> PatchRotation([FromBody] RotationVm rotationVm)
+        //{
+        //    return Ok(rotationVm);
+        //}
     }
 }

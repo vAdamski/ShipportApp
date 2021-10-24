@@ -23,6 +23,8 @@ namespace ShipportApp.Application.Terminals.Queries.GetTerminals
         {
             var terminals = _appDatabase.terminals;
 
+            var cargoes = _appDatabase.cargos;
+
             var terminalsVm = new TerminalsVm();
 
             terminalsVm.terminals = new List<TerminalDto>();
@@ -33,7 +35,8 @@ namespace ShipportApp.Application.Terminals.Queries.GetTerminals
                     Id = terminal.Id,
                     Name = terminal.Name,
                     ATB = terminal.ATB,
-                    ATD = terminal.ATD
+                    ATD = terminal.ATD,
+                    Cargoes = cargoes.Where(x => x.TerminalId == terminal.Id).ToList()
                 }));
 
             return terminalsVm;

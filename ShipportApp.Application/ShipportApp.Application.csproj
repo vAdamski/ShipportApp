@@ -18,6 +18,16 @@
 
   <ItemGroup>
     <Folder Include="Terminals\Commands\" />
+    <Folder Include="Rotations\" />
+    <Folder Include="Rotations\Commands\" />
+    <Folder Include="Rotations\Queries\" />
+    <Folder Include="Rotations\Queries\GetRotation\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Rotations\" />
+    <None Remove="Rotations\Commands\" />
+    <None Remove="Rotations\Queries\" />
+    <None Remove="Rotations\Queries\GetRotation\" />
+  </ItemGroup>
 </Project>

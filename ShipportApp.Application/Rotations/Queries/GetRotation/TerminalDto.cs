@@ -6,14 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShipportApp.Application.Terminals.Queries.GetTerminals
+namespace ShipportApp.Application.Rotations.Queries.GetRotation
 {
     public class TerminalDto
     {
-        public string Id { get; set; }
         public string Name { get; set; }
         public List<Cargo> Cargoes { get; set; }
-        public DateTime? ATB { get; set; }
-        public DateTime? ATD { get; set; }
     }
 }

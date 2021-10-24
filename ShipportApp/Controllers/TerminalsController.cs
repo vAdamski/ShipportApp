@@ -1,16 +1,14 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ShipportApp.Application.Common.Interfaces;
+using ShipportApp.Application.Rotations.Queries.GetRotation;
 using ShipportApp.Application.Terminals.Queries.GetTerminal;
 using ShipportApp.Application.Terminals.Queries.GetTerminals;
-using ShipportApp.Domain.Entities;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ShipportApp.Controllers
 {
     [Route("api/terminals")]
-    public class TerminalController : BaseController
+    public class TerminalsController : BaseController
     {
         [HttpGet]
         public async Task<ActionResult<TerminalsVm>> GetAsync()

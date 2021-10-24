@@ -24,14 +24,8 @@ namespace ShipportApp.Controllers
             return Ok(cargoesVm);
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<CargoVm>> GetCargoByIdAsync(string id)
-        //{
-        //    return null;
-        //}
-
         [HttpPost]
-        public async Task<ActionResult<string>> PostAsync([FromBody]Cargo cargo)
+        public async Task<ActionResult<string>> PostAsync([FromBody] Cargo cargo)
         {
             var id = await Mediator.Send(
                 new CreateCargoCommand()
@@ -47,7 +41,7 @@ namespace ShipportApp.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<string>> DeleteCargo(string id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return BadRequest(id);
             }
