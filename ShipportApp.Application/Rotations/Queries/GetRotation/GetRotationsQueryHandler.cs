@@ -22,7 +22,7 @@ namespace ShipportApp.Application.Rotations.Queries.GetRotation
             var cargoes = _appDatabase.cargos;
 
             var rotationVm = new RotationVm();
-            rotationVm.terminals = new List<TerminalDto>();
+            rotationVm.terminals = new List<RotationDto>();
 
             terminals.ForEach(terminal =>
             {
@@ -31,7 +31,7 @@ namespace ShipportApp.Application.Rotations.Queries.GetRotation
                 if (countCargoesInTerminal > 0)
                 {
                     rotationVm.terminals.Add(
-                        new TerminalDto
+                        new RotationDto
                         {
                             Name = terminal.Name,
                             Cargoes = cargoesInTerminal.ToList()

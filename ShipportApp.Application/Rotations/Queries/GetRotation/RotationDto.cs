@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ShipportApp.Application.Rotations.Queries.GetRotation
 {
-    public class TerminalDto
+    public class RotationDto
     {
         public string Name { get; set; }
         public List<Cargo> Cargoes { get; set; }
