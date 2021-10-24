@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ShipportApp.Application.Rotations.Queries.GetRotation;
 using ShipportApp.Application.Terminals.Queries.GetTerminal;
 using ShipportApp.Application.Terminals.Queries.GetTerminals;
 using System.Threading.Tasks;
