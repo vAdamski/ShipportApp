@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShipportApp.Controllers
 {
-    [Route("api/cargoes")]
+    [Route("api/rotation")]
     public class RotationController : BaseController
     {
         [HttpGet]
