@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using ShipportApp.Application.Rotations.Commands.EditRotation;
 using ShipportApp.Application.Rotations.Queries.GetRotation;
-using ShipportApp.Domain.Entities;
 using System;
 using System.Threading.Tasks;
 
@@ -13,16 +13,22 @@ namespace ShipportApp.Controllers
         [HttpGet]
         public async Task<ActionResult<RotationVm>> GetAsync()
         {
-            RotationVm rotation = await Mediator.Send(new GetRotationsQuery { });
+            var rotation = await Mediator.Send(new GetRotationsQuery { });
 
-            Console.WriteLine(rotation.ToString());
-
-            //if(rotation == null)
-            //{
-            //    return NotFound();
-            //}
+            if (rotation == null)
+            {
+                return NotFound();
+            }
 
             return Ok(rotation);
+        }
+
+        [HttpPatch]
+        public async Task<ActionResult<RotationVm>> PatchAsync([FromBody] EditRotationVm rotation)
+        {
+            var newRotation = await Mediator.Send(new EditRotationCommand { EditRotationVm = rotation });
+
+            return Ok(newRotation);
         }
     }
 }

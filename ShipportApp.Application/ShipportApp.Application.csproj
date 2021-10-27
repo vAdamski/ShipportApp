@@ -18,8 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Terminals\Commands\" />
-    <Folder Include="Rotations\" />
-    <Folder Include="Rotations\Commands\" />
     <Folder Include="Rotations\Queries\" />
     <Folder Include="Rotations\Queries\GetRotation\" />
   </ItemGroup>
