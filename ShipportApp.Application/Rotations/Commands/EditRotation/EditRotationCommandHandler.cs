@@ -12,7 +12,7 @@ namespace ShipportApp.Application.Rotations.Commands.EditRotation
 {
     public class EditRotationCommandHandler : IRequestHandler<EditRotationCommand, EditRotationVm>
     {
-        private readonly IAppDatabase _appDatabase;
+        private IAppDatabase _appDatabase;
 
         public EditRotationCommandHandler(IAppDatabase appDatabase)
         {
@@ -26,23 +26,23 @@ namespace ShipportApp.Application.Rotations.Commands.EditRotation
 
             var rotationDtos = request.EditRotationVm.rotationDtos;
 
-            cargoesDb.ForEach(x => 
+            cargoesDb.ForEach(x =>
             {
                 x.TerminalId = "";
-                x.ATC = new DateTime(0, 0, 0, 0, 0, 0);
+                x.ATC = DateTime.MinValue;
             });
 
             rotationDtos.ForEach(terminal =>
             {
                 foreach (var cargo in terminal.Cargoes)
                 {
-                    var cargoToUpdate = cargoesDb.Where(x => x.Id == cargo.Id).FirstOrDefault();
+                    var cargoToUpdate = cargoesDb.FirstOrDefault(x => x.Id == cargo.Id);
 
                     var terminalIdExist = terminalsDb.Where(y => y.Id == terminal.TerminalId).FirstOrDefault();
 
-                    if(terminalIdExist != null || string.IsNullOrWhiteSpace(terminal.TerminalId))
+                    if ((terminalIdExist != null || string.IsNullOrWhiteSpace(terminal.TerminalId)) && cargoToUpdate != null)
                     {
-                        cargoToUpdate.TerminalId = terminal.TerminalId;
+                        cargoToUpdate.TerminalId = terminalIdExist.Id;
                         cargoToUpdate.ATC = terminal.Cargoes.Where(x => x.Id == cargo.Id).FirstOrDefault().ATC;
                     }
                 }
