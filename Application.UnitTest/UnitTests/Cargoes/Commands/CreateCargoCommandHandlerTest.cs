@@ -39,13 +39,11 @@ namespace Application.UnitTest.UnitTests.NewFolder.Cargoes.Commands
         [Fact]
         public async Task Handle_GivenNotValidRequest_ShouldReturnNull()
         {
-            var command = new CreateCargoCommand()
+            var result = await _handler.Handle(new CreateCargoCommand()
             {
-                Name = "",
+                Name = "12",
                 ATC = DateTime.Now
-            };
-
-            var result = await _handler.Handle(command, CancellationToken.None);
+            }, CancellationToken.None);
 
             var dir = _appDatabase.cargos.FirstOrDefault(x => x.Id == result);
 
@@ -55,13 +53,13 @@ namespace Application.UnitTest.UnitTests.NewFolder.Cargoes.Commands
         [Fact]
         public async Task Handle_GivenNotValidRequestDataTimeNull_ShouldReturnNull()
         {
-            var command = new CreateCargoCommand()
-            {
-                Name = "Keyboard",
-                ATC = null
-            };
-
-            var result = await _handler.Handle(command, CancellationToken.None);
+            var result = await _handler.Handle(
+                new CreateCargoCommand()
+                {
+                    Name = "Keyboards",
+                    ATC = null
+                },
+                CancellationToken.None);
 
             var dir = _appDatabase.cargos.FirstOrDefault(x => x.Id == result);
 
