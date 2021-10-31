@@ -21,25 +21,17 @@ namespace ShipportApp.Application.Cargoes.Commands.CreateCargo
 
         public async Task<string> Handle(CreateCargoCommand request, CancellationToken cancellationToken)
         {
-            try
+            Cargo cargo = new Cargo()
             {
-                Cargo cargo = new Cargo()
-                {
-                    Name = request.Name,
-                    Id = request.Id,
-                    ATC = request.ATC,
-                    TerminalId = request.TerminalId
-                };
+                Name = request.Name,
+                Id = request.Id,
+                ATC = request.ATC,
+                TerminalId = request.TerminalId
+            };
 
-                _appDatabase.cargos.Add(cargo);
+            _appDatabase.cargos.Add(cargo);
 
-                return cargo.Id;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-                return null;
-            }
+            return cargo.Id;
         }
     }
 }

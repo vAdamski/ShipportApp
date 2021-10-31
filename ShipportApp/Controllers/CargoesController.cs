@@ -25,15 +25,14 @@ namespace ShipportApp.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<string>> PostAsync([FromBody] Cargo cargo)
+        public async Task<ActionResult<string>> PostAsync([FromBody] CreateCargoCommand cargo)
         {
-            var id = await Mediator.Send(
-                new CreateCargoCommand()
-                {
-                    Name = cargo.Name,
-                    TerminalId = cargo.TerminalId,
-                    ATC = cargo.ATC
-                });
+            var id = await Mediator.Send(cargo);
+
+            if(id == null)
+            {
+                return BadRequest();
+            }
 
             return Ok(id);
         }

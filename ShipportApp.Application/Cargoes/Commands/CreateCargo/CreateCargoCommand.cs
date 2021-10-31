@@ -24,11 +24,10 @@ namespace ShipportApp.Application.Cargoes.Commands.CreateCargo
             }
             set
             {
-                this._id = Guid.NewGuid().ToString();
+                //this._id = Guid.NewGuid().ToString();
             }
         }
         public string Name { get; set; }
-        [Required]
         public string TerminalId { get; set; }
         public DateTime? ATC { get; set; }
     }

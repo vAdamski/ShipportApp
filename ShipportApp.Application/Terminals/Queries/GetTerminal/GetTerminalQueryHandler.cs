@@ -20,9 +20,18 @@ namespace ShipportApp.Application.Terminals.Queries.GetTerminal
         }
         public async Task<TerminalVm> Handle(GetTerminalQuery request, CancellationToken cancellationToken)
         {
-            //var terminal = await _appDatabase.terminals.Where(x => x.Id == request.TerminalId).FirstOrDefaultAsync(cancellationToken);
+            //Use Validation for this...
+            if(string.IsNullOrWhiteSpace(request.TerminalId))
+            {
+                return null;
+            }
 
             var terminal = _appDatabase.terminals.Where(x => x.Id == request.TerminalId).FirstOrDefault();
+
+            if(terminal == null)
+            {
+                return null;
+            }
 
             var terminalVm = new TerminalVm
             {
