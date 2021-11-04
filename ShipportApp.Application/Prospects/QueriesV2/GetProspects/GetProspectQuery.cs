@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShipportApp.Application.Prospects.Queries.GetProspects
+namespace ShipportApp.Application.Prospects.QueriesV2.GetProspects
 {
-    public class GetProspectsQuery : IRequest<ProspectVm>
+    public class GetProspectQuery : IRequest<ProspectVm>
     {
 
     }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using ShipportApp.Application.Prospects.Queries.GetProspects;
+using ShipportApp.Application.Prospects.QueriesV2.GetProspects;
 using System.Threading.Tasks;
 
 namespace ShipportApp.Controllers
@@ -12,7 +12,7 @@ namespace ShipportApp.Controllers
         [HttpGet]
         public async Task<ActionResult> GetProspectsAsync()
         {
-            var response = await Mediator.Send(new GetProspectsQuery { });
+            var response = await Mediator.Send(new GetProspectQuery { });
 
             return Ok(response);
         }
